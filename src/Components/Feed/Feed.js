@@ -49,9 +49,8 @@ const Feed = () => {
     }
     startTransition(() => {
       setIsLoading(true);
-      fetch(
-        `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
-      )
+      fetch(`https://sinecloud-server.onrender.com/api/soundcloud`)
+        // ?offset=${offset}&limit=${limit}
         .then((response) => {
           if (!response.ok)
             throw new Error("Request failed with status " + response.status);
