@@ -27,8 +27,10 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const offset = 0; // replace with the actual offset
+        const limit = 10; // replace with the actual limit
         const response = await axios.get(
-          "https://sinecloud-server.onrender.com"
+          `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
         );
         setData(response.data);
         console.log(response.data);
