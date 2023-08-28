@@ -31,3 +31,27 @@ html {
 }
 
 
+@media screen and (max-width: 912px) {
+
+  h1 {
+
+    font-size: 3rem !important;
+
+  }
+
+
+
+}
+
+
+
+
+@media screen and (max-width: 414px) {
+  h1 {
+
+    font-size: 3rem !important;
+
+  }
+
+
+}
