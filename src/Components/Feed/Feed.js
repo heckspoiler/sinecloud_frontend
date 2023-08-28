@@ -59,7 +59,7 @@ const Feed = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          console.log("loggin data from feed fetchTracks first log", data);
           setUsersData((oldData) => [...oldData, ...data.message]);
           setOffset((oldOffset) => oldOffset + limit);
           setIsLoading(false);

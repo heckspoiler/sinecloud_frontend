@@ -31,7 +31,7 @@ function App() {
           `https://sinecloud-server.onrender.com/api/soundcloud`
         );
         setData(response.data);
-        console.log(response.data);
+        console.log("loggin data from app.js", response.data);
       } catch (error) {
         console.error(error);
       }
