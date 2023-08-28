@@ -44,7 +44,7 @@ const Feed = () => {
     startTransition(() => {
       setIsLoading(true);
       fetch(
-        `http://localhost:4000/api/soundcloud?offset=${offset}&limit=${limit}`
+        `http://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
       )
         .then((response) => {
           if (!response.ok)
