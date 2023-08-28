@@ -27,8 +27,6 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const offset = 0;
-        const limit = 10;
         const response = await axios.get(
           `https://sinecloud-server.onrender.com/api/soundcloud`
         );
