@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.68961192.css",
-    "main.js": "/static/js/main.dde1e1c0.js",
+    "main.js": "/static/js/main.1b4753d6.js",
     "static/css/0.6d1fe451.chunk.css": "/static/css/0.6d1fe451.chunk.css",
-    "static/js/0.078c7746.chunk.js": "/static/js/0.078c7746.chunk.js",
+    "static/js/0.16980dbe.chunk.js": "/static/js/0.16980dbe.chunk.js",
     "static/js/787.da9e1e6e.chunk.js": "/static/js/787.da9e1e6e.chunk.js",
     "static/js/710.3b5baf46.chunk.js": "/static/js/710.3b5baf46.chunk.js",
     "static/media/chopper.otf": "/static/media/chopper.accd44d840881847112b.otf",
@@ -18,14 +18,14 @@
     "static/media/instagram.svg": "/static/media/instagram.03c221e033acc979e60481f2c3c62916.svg",
     "index.html": "/index.html",
     "main.68961192.css.map": "/static/css/main.68961192.css.map",
-    "main.dde1e1c0.js.map": "/static/js/main.dde1e1c0.js.map",
+    "main.1b4753d6.js.map": "/static/js/main.1b4753d6.js.map",
     "0.6d1fe451.chunk.css.map": "/static/css/0.6d1fe451.chunk.css.map",
-    "0.078c7746.chunk.js.map": "/static/js/0.078c7746.chunk.js.map",
+    "0.16980dbe.chunk.js.map": "/static/js/0.16980dbe.chunk.js.map",
     "787.da9e1e6e.chunk.js.map": "/static/js/787.da9e1e6e.chunk.js.map",
     "710.3b5baf46.chunk.js.map": "/static/js/710.3b5baf46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.68961192.css",
-    "static/js/main.dde1e1c0.js"
+    "static/js/main.1b4753d6.js"
   ]
 }
