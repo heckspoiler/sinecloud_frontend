@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useTransition } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useTransition,
+  useCallback,
+} from "react";
 import ReactPlayer from "react-player";
 import "./Feed.css";
 import faultradio from "../Home/SecondSection/Logos/radio-stations/fault-radio.png";
@@ -37,7 +43,7 @@ const Feed = () => {
     timeoutMs: 3000,
   });
 
-  const fetchTracks = () => {
+  const fetchTracks = useCallback(() => {
     if (isLoading) {
       return;
     }
@@ -62,11 +68,11 @@ const Feed = () => {
           setIsLoading(false);
         });
     });
-  };
+  }, [isLoading, offset, limit]); // Include all dependencies used inside fetchTracks
 
   useEffect(() => {
     fetchTracks();
-  }, []);
+  }, [fetchTracks]); // Now fetchTracks is memoized, so it won't cause the effect to run unnecessarily
 
   useEffect(() => {
     const observer = new IntersectionObserver(

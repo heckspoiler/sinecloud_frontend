@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "intersection-observer";
@@ -27,8 +27,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const offset = 0; // replace with the actual offset
-        const limit = 10; // replace with the actual limit
+        const offset = 0;
+        const limit = 10;
         const response = await axios.get(
           `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
         );

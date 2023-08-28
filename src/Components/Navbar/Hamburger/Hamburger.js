@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./Hamburger.css";
 
 export const Hamburger = function ({ isOpen, toggleMenu }) {
