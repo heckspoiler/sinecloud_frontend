@@ -36,6 +36,7 @@ html {
   h1 {
 
     font-size: 3rem !important;
+    letter-spacing: 0 !important;
 
   }
 
@@ -50,6 +51,7 @@ html {
   h1 {
 
     font-size: 3rem !important;
+    letter-spacing: 0;
 
   }
 
