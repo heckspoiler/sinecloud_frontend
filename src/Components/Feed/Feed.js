@@ -38,7 +38,7 @@ const Feed = () => {
   const elementsRef = useRef([]);
   const limit = 5;
   const lastTrackRef = useRef();
-
+  const debounceTimeout = useRef(null);
   const [isPending, startTransition] = useTransition({
     timeoutMs: 3000,
   });
@@ -47,28 +47,36 @@ const Feed = () => {
     if (isLoading) {
       return;
     }
-    startTransition(() => {
-      setIsLoading(true);
-      fetch(
-        `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
-      )
-        //
-        .then((response) => {
-          if (!response.ok)
-            throw new Error("Request failed with status " + response.status);
-          return response.json();
-        })
-        .then((data) => {
-          console.log("loggin data from feed fetchTracks first log", data);
-          setUsersData((oldData) => [...oldData, ...data.message]);
-          setOffset((oldOffset) => oldOffset + limit);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error(error);
-          setIsLoading(false);
-        });
-    });
+
+    // Clear any existing timeouts
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current);
+    }
+
+    // Add a new timeout
+    debounceTimeout.current = setTimeout(() => {
+      startTransition(() => {
+        setIsLoading(true);
+
+        fetch(
+          `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
+        )
+          .then((response) => {
+            if (!response.ok)
+              throw new Error(`Request failed with status ${response.status}`);
+            return response.json();
+          })
+          .then((data) => {
+            setUsersData((oldData) => [...oldData, ...data.message]);
+            setOffset((oldOffset) => oldOffset + limit);
+            setIsLoading(false);
+          })
+          .catch((error) => {
+            console.error(error);
+            setIsLoading(false);
+          });
+      });
+    }, 300); // 300ms debounce time
   }, [isLoading, offset, limit]); // Include all dependencies used inside fetchTracks
 
   useEffect(() => {
