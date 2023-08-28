@@ -1,0 +1,42 @@
+h1 {
+      position: absolute;
+      color: #ececec;
+      font-size: 130px;
+      font-family: "Nohemi Bold";
+      margin-top: 4rem;
+}
+
+@media screen and (max-width: 1180px) {
+
+
+      h1 {
+            font-size: 8rem;
+      }
+
+}
+
+@media screen and (max-width: 720px) {
+
+
+      h1 {
+            font-size: 6rem;
+      }
+
+}
+
+
+@media screen and (max-width: 414px) {
+
+      h1 {
+            font-size: calc(3rem + 5vw);
+            margin-top: 6rem;
+      }
+}
+
+@media screen and (max-width: 320px) {
+
+      h1 {
+            font-size: calc(3rem + 5vw);
+            margin-top: 4.5rem;
+      }
+}

@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Nohemi Medium';
+  src: url('./general_resources/fonts/Nohemi/Nohemi-Medium.woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Nohemi Bold';
+  src: url('./general_resources/fonts/Nohemi/Nohemi-Bold.woff'), url('./general_resources/fonts/Nohemi/Nohemi-Bold.woff2');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Nohemi Extra-Bold';
+  src: url('./general_resources/fonts/Nohemi/Nohemi-ExtraBold.woff2'), url('./general_resources/fonts/Nohemi/Nohemi-ExtraBold.woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Chopper';
+  src: url('./general_resources/fonts/Chopper/chopper.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.App {
+
+  max-width: 1552px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+}
+
+li {
+  list-style-type: none;
+}
+
+input:focus {
+  outline: 1.5px solid black;
+  border-radius: 0px;
+
+}
+
+body {
+  margin-top: calc(2rem + 3vh);
+  background-image: linear-gradient(rgba(134, 138, 246, .3) .1em, transparent .08rem), linear-gradient(90deg, rgba(134, 138, 246, .3) .08rem, transparent .1em);
+  background-size: 19.8vw 19.8vw;
+  width: 100vw;
+}
+
+@media screen and (max-width: 1180px) {
+  body {
+    width: 100vw;
+    max-width: 1180px !important;
+
+  }
+
+  .App {
+    max-width: 1180px !important;
+  }
+
+}
+
+@media screen and (max-width: 414px) {
+
+  body {
+    margin-top: 0;
+  }
+
+}
