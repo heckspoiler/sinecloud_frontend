@@ -163,7 +163,7 @@ const Feed = () => {
             }}
             key={index}
           >
-            <ReactPlayer url={data.track.url} className="react-player" />
+            {/* <ReactPlayer url={data.track.url} className="react-player" /> */}
           </div>
         );
       })}
