@@ -24,7 +24,7 @@ const getLogoByUser = (user) => {
   }
 };
 
-const Feed = () => {
+export const Feed = () => {
   const [usersData, setUsersData] = useState([]);
   const [currentRadioStation, setCurrentRadioStation] = useState("");
   const [offset, setOffset] = useState(0);
@@ -154,5 +154,3 @@ const Feed = () => {
     </div>
   );
 };
-
-export default Feed;
