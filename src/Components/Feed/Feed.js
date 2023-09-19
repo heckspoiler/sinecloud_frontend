@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useTransition,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useTransition } from "react";
 import ReactPlayer from "react-player";
 import "./Feed.css";
 import faultradio from "../Home/SecondSection/Logos/radio-stations/fault-radio.png";
@@ -38,52 +32,41 @@ const Feed = () => {
   const elementsRef = useRef([]);
   const limit = 5;
   const lastTrackRef = useRef();
-  const debounceTimeout = useRef(null);
+
   const [isPending, startTransition] = useTransition({
     timeoutMs: 3000,
   });
 
-  // Clear refs on usersData change
-  useEffect(() => {
-    elementsRef.current = [];
-  }, [usersData]);
-
-  const fetchTracks = useCallback(() => {
+  const fetchTracks = () => {
     if (isLoading) {
       return;
     }
-
-    if (debounceTimeout.current) {
-      clearTimeout(debounceTimeout.current);
-    }
-
-    debounceTimeout.current = setTimeout(() => {
-      startTransition(() => {
-        setIsLoading(true);
-        fetch(
-          `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
-        )
-          .then((response) => {
-            if (!response.ok)
-              throw new Error(`Request failed with status ${response.status}`);
-            return response.json();
-          })
-          .then((data) => {
-            setUsersData((oldData) => [...oldData, ...data.message]);
-            setOffset((oldOffset) => oldOffset + limit);
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            console.error(error);
-            setIsLoading(false);
-          });
-      });
-    }, 300);
-  }, [isLoading, offset, limit]);
+    startTransition(() => {
+      setIsLoading(true);
+      fetch(
+        `http://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
+      )
+        .then((response) => {
+          if (!response.ok)
+            throw new Error("Request failed with status " + response.status);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setUsersData((oldData) => [...oldData, ...data.message]);
+          setOffset((oldOffset) => oldOffset + limit);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setIsLoading(false);
+        });
+    });
+  };
 
   useEffect(() => {
     fetchTracks();
-  }, [fetchTracks]);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -137,6 +120,7 @@ const Feed = () => {
 
   return (
     <div className="feed">
+      <h1>{isPending ? "Loading..." : null}</h1>
       <h1>
         Feed me <br className="break-title" />
         new music
@@ -162,7 +146,7 @@ const Feed = () => {
               elementsRef.current.push(element);
               if (isLastItem) lastTrackRef.current = element;
             }}
-            key={data.id || index} // Use a unique id if available
+            key={index}
           >
             <ReactPlayer url={data.track.url} className="react-player" />
           </div>
