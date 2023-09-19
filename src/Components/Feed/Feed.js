@@ -151,6 +151,7 @@ const Feed = () => {
       </div>
 
       {usersData.map((data, index) => {
+        console.log(data, index);
         const isLastItem = index === usersData.length - 1;
         return (
           <div
