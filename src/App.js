@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
