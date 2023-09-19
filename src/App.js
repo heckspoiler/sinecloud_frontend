@@ -8,7 +8,8 @@ import { Navbar } from "./Components/Navbar/Navbar";
 import { Stations } from "./Components/Stations/Stations";
 import { About } from "./Components/About/About";
 import { Hamburger } from "./Components/Navbar/Hamburger/Hamburger";
-const Feed = lazy(() => import("./Components/Feed/Feed"));
+import { Feed } from "./Components/Feed/Feed";
+// const Feed = lazy(() => import("./Components/Feed/Feed"));
 
 function App() {
   useEffect(() => {
