@@ -43,21 +43,23 @@ const Feed = () => {
     timeoutMs: 3000,
   });
 
+  // Clear refs on usersData change
+  useEffect(() => {
+    elementsRef.current = [];
+  }, [usersData]);
+
   const fetchTracks = useCallback(() => {
     if (isLoading) {
       return;
     }
 
-    // Clear any existing timeouts
-    if (debounceTimeout.currentRadioStation) {
-      clearTimeout(debounceTimeout.currentRadioStation);
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current);
     }
 
-    // Add a new timeout
-    debounceTimeout.currentRadioStation = setTimeout(() => {
+    debounceTimeout.current = setTimeout(() => {
       startTransition(() => {
         setIsLoading(true);
-
         fetch(
           `https://sinecloud-server.onrender.com/api/soundcloud?offset=${offset}&limit=${limit}`
         )
@@ -95,14 +97,14 @@ const Feed = () => {
       { threshold: 0.5 }
     );
 
-    elementsRef.currentRadioStation.forEach((element) => {
+    elementsRef.current.forEach((element) => {
       if (element) {
         observer.observe(element);
       }
     });
 
     return () => {
-      elementsRef.currentRadioStation.forEach((element) => {
+      elementsRef.current.forEach((element) => {
         if (element) {
           observer.unobserve(element);
         }
@@ -122,13 +124,13 @@ const Feed = () => {
       { threshold: 0.2 }
     );
 
-    if (lastTrackRef.currentRadioStation) {
-      observer.observe(lastTrackRef.currentRadioStation);
+    if (lastTrackRef.current) {
+      observer.observe(lastTrackRef.current);
     }
 
     return () => {
-      if (lastTrackRef.currentRadioStation) {
-        observer.unobserve(lastTrackRef.currentRadioStation);
+      if (lastTrackRef.current) {
+        observer.unobserve(lastTrackRef.current);
       }
     };
   }, [usersData, isLoading]);
@@ -157,10 +159,10 @@ const Feed = () => {
             className="feed-player-container"
             data-user={data.user}
             ref={(element) => {
-              elementsRef.currentRadioStation.push(element);
-              if (isLastItem) lastTrackRef.currentRadioStation = element;
+              elementsRef.current.push(element);
+              if (isLastItem) lastTrackRef.current = element;
             }}
-            key={index}
+            key={data.id || index} // Use a unique id if available
           >
             <ReactPlayer url={data.track.url} className="react-player" />
           </div>
