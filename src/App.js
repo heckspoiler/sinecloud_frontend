@@ -25,21 +25,21 @@ function App() {
     }, []);
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `https://sinecloud-server.onrender.com/api/soundcloud`
-  //       );
-  //       setData(response.data);
-  //       console.log("loggin data from app.js", response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://sinecloud-server.onrender.com/api/soundcloud`
+        );
+        setData(response.data);
+        console.log("loggin data from app.js", response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <Router>
