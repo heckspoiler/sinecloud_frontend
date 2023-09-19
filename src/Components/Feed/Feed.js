@@ -120,7 +120,6 @@ const Feed = () => {
 
   return (
     <div className="feed">
-      <h1>{isPending ? "Loading..." : null}</h1>
       <h1>
         Feed me <br className="break-title" />
         new music
