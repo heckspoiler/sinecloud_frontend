@@ -49,12 +49,12 @@ const Feed = () => {
     }
 
     // Clear any existing timeouts
-    if (debounceTimeout.current) {
-      clearTimeout(debounceTimeout.current);
+    if (debounceTimeout.currentRadioStation) {
+      clearTimeout(debounceTimeout.currentRadioStation);
     }
 
     // Add a new timeout
-    debounceTimeout.current = setTimeout(() => {
+    debounceTimeout.currentRadioStation = setTimeout(() => {
       startTransition(() => {
         setIsLoading(true);
 
@@ -76,12 +76,12 @@ const Feed = () => {
             setIsLoading(false);
           });
       });
-    }, 300); // 300ms debounce time
-  }, [isLoading, offset, limit]); // Include all dependencies used inside fetchTracks
+    }, 300);
+  }, [isLoading, offset, limit]);
 
   useEffect(() => {
     fetchTracks();
-  }, [fetchTracks]); // Now fetchTracks is memoized, so it won't cause the effect to run unnecessarily
+  }, [fetchTracks]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -95,14 +95,14 @@ const Feed = () => {
       { threshold: 0.5 }
     );
 
-    elementsRef.current.forEach((element) => {
+    elementsRef.currentRadioStation.forEach((element) => {
       if (element) {
         observer.observe(element);
       }
     });
 
     return () => {
-      elementsRef.current.forEach((element) => {
+      elementsRef.currentRadioStation.forEach((element) => {
         if (element) {
           observer.unobserve(element);
         }
@@ -122,20 +122,19 @@ const Feed = () => {
       { threshold: 0.2 }
     );
 
-    if (lastTrackRef.current) {
-      observer.observe(lastTrackRef.current);
+    if (lastTrackRef.currentRadioStation) {
+      observer.observe(lastTrackRef.currentRadioStation);
     }
 
     return () => {
-      if (lastTrackRef.current) {
-        observer.unobserve(lastTrackRef.current);
+      if (lastTrackRef.currentRadioStation) {
+        observer.unobserve(lastTrackRef.currentRadioStation);
       }
     };
   }, [usersData, isLoading]);
 
   return (
     <div className="feed">
-      <h1>{isPending ? "Loading..." : null}</h1>
       <h1>
         Feed me <br className="break-title" />
         new music
@@ -158,12 +157,12 @@ const Feed = () => {
             className="feed-player-container"
             data-user={data.user}
             ref={(element) => {
-              elementsRef.current.push(element);
-              if (isLastItem) lastTrackRef.current = element;
+              elementsRef.currentRadioStation.push(element);
+              if (isLastItem) lastTrackRef.currentRadioStation = element;
             }}
             key={index}
           >
-            {/* <ReactPlayer url={data.track.url} className="react-player" /> */}
+            <ReactPlayer url={data.track.url} className="react-player" />
           </div>
         );
       })}
