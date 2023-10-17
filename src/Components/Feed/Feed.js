@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useRef, useTransition } from "react";
-import ReactPlayer from "react-player";
-import "./Feed.css";
-import faultradio from "../Home/SecondSection/Logos/radio-stations/fault-radio.png";
-import kioskradio from "../Home/SecondSection/Logos/radio-stations/kiosk-radio.png";
-import nts from "../Home/SecondSection/Logos/radio-stations/nts.png";
-import thelotradio from "../Home/SecondSection/Logos/radio-stations/the-lot-radio.png";
-import trnstnradio from "../Home/SecondSection/Logos/radio-stations/trnstn-radio.png";
+import React, { useState, useEffect, useRef, useTransition } from 'react';
+import ReactPlayer from 'react-player';
+import './Feed.css';
+import faultradio from '../Home/SecondSection/Logos/radio-stations/fault-radio.png';
+import kioskradio from '../Home/SecondSection/Logos/radio-stations/kiosk-radio.png';
+import nts from '../Home/SecondSection/Logos/radio-stations/nts.png';
+import thelotradio from '../Home/SecondSection/Logos/radio-stations/the-lot-radio.png';
+import trnstnradio from '../Home/SecondSection/Logos/radio-stations/trnstn-radio.png';
 
 const getLogoByUser = (user) => {
   switch (user) {
-    case "faultradio":
+    case 'faultradio':
       return faultradio;
-    case "kioskradio":
+    case 'kioskradio':
       return kioskradio;
-    case "nts-latest":
+    case 'nts-latest':
       return nts;
-    case "thelotradio":
+    case 'thelotradio':
       return thelotradio;
-    case "trnstnradio":
+    case 'trnstnradio':
       return trnstnradio;
     default:
       return null;
@@ -26,7 +26,7 @@ const getLogoByUser = (user) => {
 
 export const Feed = () => {
   const [usersData, setUsersData] = useState([]);
-  const [currentRadioStation, setCurrentRadioStation] = useState("");
+  const [currentRadioStation, setCurrentRadioStation] = useState('');
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const elementsRef = useRef([]);
@@ -48,7 +48,7 @@ export const Feed = () => {
       )
         .then((response) => {
           if (!response.ok)
-            throw new Error("Request failed with status " + response.status);
+            throw new Error('Request failed with status ' + response.status);
           return response.json();
         })
         .then((data) => {

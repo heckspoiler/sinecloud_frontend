@@ -1,14 +1,14 @@
-import axios from "axios";
-import React, { lazy, useEffect, useState } from "react";
-import "./App.css";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import "intersection-observer";
-import { Home } from "./Components/Home/Home";
-import { Navbar } from "./Components/Navbar/Navbar";
-import { Stations } from "./Components/Stations/Stations";
-import { About } from "./Components/About/About";
-import { Hamburger } from "./Components/Navbar/Hamburger/Hamburger";
-import { Feed } from "./Components/Feed/Feed";
+import axios from 'axios';
+import React, { lazy, useEffect, useState } from 'react';
+import './App.css';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import 'intersection-observer';
+import { Home } from './Components/Home/Home';
+import { Navbar } from './Components/Navbar/Navbar';
+import { Stations } from './Components/Stations/Stations';
+import { About } from './Components/About/About';
+import { Hamburger } from './Components/Navbar/Hamburger/Hamburger';
+import { Feed } from './Components/Feed/Feed';
 // const Feed = lazy(() => import("./Components/Feed/Feed"));
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
   const toggleMenu = () => {
     setMenuOpen((prev) => {
-      console.log("Toggling menu:", !prev);
+      console.log('Toggling menu:', !prev);
       return !prev;
     }, []);
   };
@@ -32,7 +32,7 @@ function App() {
           `https://sinecloud-server.onrender.com/api/soundcloud`
         );
         setData(response.data);
-        console.log("loggin data from app.js", response.data);
+        console.log('loggin data from app.js', response.data);
       } catch (error) {
         console.error(error);
       }
@@ -50,7 +50,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/stations" element={<Stations />} />
           <Route path="/about" element={<About />} />
-          <Route path="/feed/:stationName" component={Feed} />
+          <Route path="/feed/:stationName" element={Feed} />
           <Route path="/feed" element={<Feed />} />
         </Routes>
       </div>
